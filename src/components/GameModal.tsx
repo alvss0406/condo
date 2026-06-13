@@ -22,15 +22,15 @@ export default function GameModal({ game, t, onClose }: Props) {
     setToken(tk);
   }
 
-  async function handleAccessGame() {
+  function handleAccessGame() {
     playClick();
     if (!token) {
       setTokenWarning(true);
       setTimeout(() => setTokenWarning(false), 2800);
       return;
     }
-    await logGameAccess(game.name, token);
     window.open(game.url, '_blank', 'noopener,noreferrer');
+    logGameAccess(game.name, token);
   }
 
   function handleCopy() {
